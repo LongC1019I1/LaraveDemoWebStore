@@ -17,11 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/home', function () {
     return view('admin.dashboard');
 })->middleware('checkLogin');
-Route::get('users','UserController@index')->middleware('checkLogin');
-Route::get('login','LoginController@showFormLogin');
+Route::get('users', 'UserController@index')->middleware('checkLogin');
+Route::get('login', 'LoginController@showFormLogin');
 Route::get('logout', 'LoginController@logout')->name('logout');//đặt tên cho logout
-Route::post('login','LoginController@login')->name('login');
-Route::middleware('checkLogin')->prefix('users')->group(function (){
-    Route::get('/','UserController@index')->name('users.index');
+Route::post('login', 'LoginController@login')->name('login');
+Route::middleware('checkLogin')->prefix('users')->group(function () {
+    Route::get('/', 'UserController@index')->name('users.index');
 });
 
